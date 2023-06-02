@@ -1,5 +1,6 @@
 public class Employee {
 
+    private static int nextId = 1;
     private String firstName;
     private String lastName;
     private String position;
@@ -10,7 +11,7 @@ public class Employee {
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
-        this.employeeID = employeeID;
+        this.employeeID = nextId++;
         this.salary = salary;
     }
 
@@ -32,6 +33,7 @@ public class Employee {
                 ", salary=" + salary +
                 '}';
     }
+
 
     public void setSalary(int salary) {
         this.salary = salary;

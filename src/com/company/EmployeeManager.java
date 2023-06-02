@@ -1,17 +1,42 @@
+package com.company;
+
 import java.util.*;
 
 public class EmployeeManager {
 
-    private final HashMap<Integer,Employee> employees;
+    private final HashMap<Integer, Employee> employees;
 
     public EmployeeManager(HashMap<Integer, Employee> employees) {
         this.employees = employees;
     }
 
-    public  void addEmployee(Employee employee){
-        Integer keyEmployee = employee.getEmployeeID();
-        employees.put(keyEmployee,employee);
+    public void addEmployee() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Wpisz imiê:");
+        String firstName = scanner.nextLine();
+
+        System.out.println("Wpisz nazwisko:");
+        String lastName = scanner.nextLine();
+
+        System.out.println("Wpisz pozycjê:");
+        String position = scanner.nextLine();
+
+        System.out.println("Wpisz zarobki:");
+        int salary = scanner.nextInt();
+
+        int employeeID = generateUniqueEmployeeID();
+
+        Employee employee = new Employee(firstName, lastName, position, employeeID, salary);
+        employees.put(employeeID, employee);
+
+        System.out.println("Pracownik dodany!");
     }
+
+    private int generateUniqueEmployeeID() {
+        return employees.size() + 1;
+    }
+    
     public void removeEmployee(Employee employee){
         if(employees.containsKey(employee.getEmployeeID()))
             employees.remove(employee.getEmployeeID());

@@ -44,14 +44,18 @@ public class EmployeeManager {
             System.out.println("Pracownik o takim ID nie istnieje");
     }
 
-    public void updateEmployee(int employeeID, Employee newEmployee){
-        if(employees.containsKey(employeeID))
-        {
-            employees.put(employeeID,newEmployee);
-        }
-        else
+    public void updateEmployee(int employeeID, String newPosition, int newSalary) {
+        if (employees.containsKey(employeeID)) {
+            Employee employee = employees.get(employeeID);
+            employee.setPosition(newPosition);
+            employee.setSalary(newSalary);
+            employees.put(employeeID, employee);
+            System.out.println("Pracownik zaktualizowany!");
+        } else {
             System.out.println("Pracownik o takim ID nie istnieje");
+        }
     }
+
     public Employee searchEmployeeByID(int employeeID) {
         if(employees.containsKey(employeeID)){
             return employees.get(employeeID);
